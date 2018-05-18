@@ -1,0 +1,137 @@
+﻿@using Music_Web.Areas.Admin.Models.DataModel
+@model WebSong
+@{
+    ViewBag.Title = "Trang chủ";
+}
+<style>
+    #name{
+    position: relative;
+    text-align: center;
+    color: white;
+    }
+    .bottom-left {
+        position: absolute;
+        bottom: 15px;
+        left: 16px;
+        font-weight:bold;
+        font-size:20px
+    }
+    #text{
+      font-weight:bold;
+      font-size:20px;
+      color:black;
+      padding-top:10px;
+      text-align:left;
+
+
+    }
+    #link{
+        text-align:right
+    }
+
+   #myButton,#btn{
+
+      height:45px;
+      font-weight:bold;
+      font-size:20px;
+      width:95px;
+      color:white;
+      background:#000000;
+       border-radius: 20px;
+        display: inline-block;
+      cursor: pointer;
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06),
+                  0 2px 10px 0 rgba(0,0,0,0.07);
+        -webkit-transition: all 300ms ease;
+        transition: all 300ms ease;
+
+   }
+    #myButton:hover,#btn:hover{
+    transform: translateY(1px);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
+              0 1px 1px 0 rgba(0,0,0,0.09);
+}
+   
+
+   
+</style>
+<link href="~/Content/BodyHome_Css.css" rel="stylesheet" />
+<div class="page">
+    <div class="wrapper col-lg-7">
+        <div class="content-wrapper">
+            <div class="df">
+                <h1 style="color:white">Content</h1>
+                <p style="color:white">&larr; Responsive Width &rarr;</p>                
+                <article class="audio">
+                 <div id="name">
+                        <img src="../Images/hinhnen.jpg" style="height:380px;width:630px" onClick="document.getElementById('audio_play').play(); return false;" />
+                        @if (Model.Name.Length > 30)
+                        {
+                        <div class="bottom-left">@ViewBag.Dem.  @Model.Name.Substring(0, 30)...</div>
+                        } else
+                        {
+                            <div class="bottom-left">@ViewBag.Dem. @Model.Name.Substring(0,Model.Name.Length-4)</div>
+                        }
+                    </div>
+                    
+          <audio controls style="width:630px;"  id="audio_play" controlsList="nodownload" >                           
+                    <source src="@("https://docs.google.com/uc?export=download&id="+ Model.Id)"type="audio/mp3" />
+    </audio>
+                   
+                   
+                </article>
+                <div  style="width:630px">
+                    <p class="col-xs-6" id="text">Tải nhạc miễn phí </p>
+                     @{
+
+                         if (Session["username"] == null)
+                         {
+                                <a class="col-xs-6" id="link" href="@Url.Action("DangNhap", "Users")">
+                                <button id="btn">Tải về</button>
+                                </a>
+                         }
+                         else
+                         {
+                             if (ViewBag.FileDown!="")
+                             {
+                                 <a class="col-xs-6" id="link" href="@ViewBag.FileDown">
+                                    <button onclick="myFunction()" id="myButton">Tải về</button>
+                                 </a>
+                             }
+                             if(ViewBag.FileDown=="")
+                             {
+                                 using (Html.BeginForm("MyAudio", "Home", new { dem = ViewBag.Dem, mabaihat = Model.Id, name = Model.Name, infoUser ="ID:"+Session["userid"].ToString()+":"+Session["username"].ToString()}, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                 {
+                                   
+                                        <input type="submit" id="btn" value="Tải về" />
+                                   
+                                 }
+                             }
+
+
+                         }
+                    }
+                    
+                </div>
+
+               <!-- <p id="kq" style="font-size:20px;font-weight:bold;text-align:left;color:red">@ViewBag.FileDown</p>
+                --> 
+            </div>
+        </div>
+    </div>
+    <div class="sidebar col-lg-5">
+        <h2>List bài hát</h2>
+        <p>&larr; Enjoy &rarr;</p>
+        @Html.Action("List_BaiHat", "Home")
+    </div>
+</div>
+<script type="text/javascript">
+    function myFunction() {   
+        //document.getElementById("kq").innerHTML = document.getElementById("link").getAttribute("href");
+        return false;
+    };
+    $(document).ready(function () {
+            $("#myButton").click();
+       
+    });
+</script>

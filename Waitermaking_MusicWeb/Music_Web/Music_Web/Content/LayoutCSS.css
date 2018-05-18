@@ -1,0 +1,162 @@
+﻿@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+body {
+    width: 100%;
+    background: url('../Images/hinhnen.jpg') no-repeat fixed center center;
+    height: 70px;
+    background-color: #060;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+
+.header{
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  background: rgba(0, 0, 0,0.1) ;//màu cho thanh menu tren
+  -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  font-style: italic;
+}
+
+.inner {
+  padding: 10px;
+}
+
+.masthead-nav > li {//thanh menu
+  display: inline-block;
+}
+
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  /* IE8 proofing */
+  color: rgba(255, 255, 255, .95);
+  border-bottom: 2px solid transparent;
+}
+.masthead-nav > span {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  /* IE8 proofing */
+  color: rgba(255, 255, 255, .95);
+  border-bottom: 2px solid transparent;
+}
+.body-content {
+    min-height: 500px;
+}
+///
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+	font: 400 15px/1.4 'Open Sans',sans-serif;
+}
+
+
+
+
+
+
+
+footer{
+	background-color: #0009;//mau cho footer
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	width: 100%;
+	text-align: left;
+	font: normal 16px sans-serif;
+    height: 100px;
+	padding: 30px 50px;
+}
+
+footer .footer-limiter {
+	max-width: 880px;
+	margin: 0 auto;
+}
+
+footer .footer-left p{
+	color:  #8f9296;
+	font-size: 14px;
+	margin: 0;
+}
+
+/* Footer links */
+
+footer p.footer-links{
+	font-size:18px;
+	font-weight: bold;
+	color:  #ffffff;
+	margin: 0 0 10px;
+	padding: 0;
+}
+
+
+footer .footer-right{
+	float: right;
+	margin-top: 0px;
+    margin-right:-40px;
+	max-width: 180px;
+}
+
+footer .footer-right a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+   
+	margin-left: 3px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 600px) {
+
+	footer .footer-left,
+	footer .footer-right{
+		text-align: center;
+	}
+
+	footer .footer-right{
+		float: none;
+		margin: 0 auto 20px;
+	}
+
+	footer .footer-left p.footer-links{
+		line-height: 1.8;
+	}
+}
+
+/* ------- Demo adds. Please ignore and remove ------- */
+
+#bsaHolder{
+	top: 100px !important;
+}
+
+@media (max-width: 1200px) {
+    #bsaHolder{ 
+    	display:none;
+    }
+}

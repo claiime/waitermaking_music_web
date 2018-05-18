@@ -1,0 +1,101 @@
+﻿@using Music_Web.Areas.Admin.Models.DataModel
+
+@model PagedList.IPagedList<WebUser>
+@using PagedList.Mvc;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Xem thành viên</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Thêm", "Create")
+    </p>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Avatar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().IsAdmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Allowed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().GioiTinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Date)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td id="email">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <img style="cursor:pointer" id="img_@item.UserId" src="@item.Avatar" width="40" onclick="selectImage('WebUsers/ChangeImage/@item.UserId',this.id)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAdmin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Allowed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GioiTinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.UserId }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.UserId }) |
+                    @Html.ActionLink("Cấp quyền", "Index", "WebGrantPermissions", new { id = item.UserId }, null)
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.UserId })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div id="pageL">
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+
+
+    </div>
+    <div class="col-md-offset-11 col-md2">
+        <ul class="pager">
+            <li class="previous"><a style="background-color:darkblue" href="/Admin/Home/Index"><h5 style="color:white">Trở lại </h5></a></li>
+        </ul>
+    </div>
+</body>
+</html>

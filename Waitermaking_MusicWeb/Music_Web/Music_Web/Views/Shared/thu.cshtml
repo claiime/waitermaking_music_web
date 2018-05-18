@@ -1,0 +1,85 @@
+﻿
+
+
+<body>
+
+    <header>
+
+        <div class="header-limiter">
+
+            <h1><a href="http://tutorialzine.com/2016/03/quick-tip-the-best-way-to-make-sticky-footers/"><span>Quick Tip:</span> The Best Way To Make Sticky Footers</a></h1>
+
+            <nav>
+                <a href="http://tutorialzine.com/2016/03/quick-tip-the-best-way-to-make-sticky-footers/">Download</a>
+            </nav>
+        </div>
+
+    </header>
+
+    <section class="main-content">
+        <div class="card">
+            <h1>Sticky Footer Page Demo</h1>
+            <h3>This page demonstrates how you can create a footer with flexbox which always sticks to the bottom of the page, regardless of how much conotent there is.</h3>
+            <a href='#' id="add-content">Toggle Dummy Content</a>
+
+            <div class="dummy-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id orci sapien. Donec tincidunt fringilla fermentum. Cras cursus dictum tellus. In hac habitasse platea dictumst. Nulla facilisi. Vestibulum aliquet accumsan libero vitae semper. Pellentesque felis velit, semper vitae arcu lobortis, placerat sollicitudin risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                <img src="satelite.jpg" alt="Satelite Image">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id orci sapien. Donec tincidunt fringilla fermentum. Cras cursus dictum tellus. In hac habitasse platea dictumst. Nulla facilisi. Vestibulum aliquet accumsan libero vitae semper. Pellentesque felis velit, semper vitae arcu lobortis, placerat sollicitudin risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+
+        <div class="footer-limiter">
+
+            <div class="footer-right">
+
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
+
+            </div>
+
+            <div class="footer-left">
+
+                <p class="footer-links">This is your sticky footer</p>
+
+                <p>Company Name Â© 2016</p>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+		var dummyContent = $('.dummy-content').children(),
+			i;
+
+
+		$('#add-content').click(function(e){
+			e.preventDefault();
+
+			if($(dummyContent[0]).is(":visible")){
+				for(i=0;i<dummyContent.length;i++){
+					$(dummyContent[i]).fadeOut(600);
+				}
+			}
+			else{
+				for(i=0;i<dummyContent.length;i++){
+					$(dummyContent[i]).delay(600*i).fadeIn(600);
+				}
+			}
+
+		});
+    </script>
+    <!-- Demo ads. Please ignore and remove. -->
+    <script src="http://cdn.tutorialzine.com/misc/enhance/v2.js" async></script>
+</body>
+
+</html>

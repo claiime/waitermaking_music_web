@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Music_Web.Areas.Admin.Models.DataModel.WebBusiness>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Các nghiệp vụ</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Cập nhật", "UpdateBusiness")
+    </p>
+    <div>
+        @Html.Raw(TempData["err"])
+    </div>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusinessName)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.BusinessId }) |
+                    @Html.ActionLink("Chi tiết quyền", "Index", "WebPermissions", new { id = item.BusinessId }, null) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.BusinessId })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="col-md-offset-11 col-md2">
+        <ul class="pager">
+            <li class="previous"><a style="background-color:darkblue" href="/Admin/Home/Index"><h5 style="color:white">Trở lại </h5></a></li>
+        </ul>
+    </div>
+</body>
+</html>

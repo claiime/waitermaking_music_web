@@ -1,0 +1,109 @@
+﻿@model Music_Web.Areas.Admin.Models.DataModel.WebUser
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Xóa thành viên</title>
+</head>
+<body>
+    <h3>Bạn có chắc muốn xóa?</h3>
+    <div>
+        <h4>Bảng thành viên</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd id="email">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Avatar)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Avatar)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsAdmin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsAdmin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Allowed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Allowed)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GioiTinh)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-default" /> |
+                @Html.ActionLink("Trở lại", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Music_Web.Areas.Admin.Models.DataModel.WebSong>
+@{
+    ViewBag.Title = "Google Drive API v3 - ASP.NET MVC 5 ";
+}
+<h2 class="imagetable">Google Drive API v3 - [Root Directory]</h2>
+
+<style type="text/css">
+    table.imagetable {
+        font-family: verdana,arial,sans-serif;
+        font-size: 11px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #999999;
+        border-collapse: collapse;
+    }
+
+        table.imagetable th {
+            background: #b5cfd2 url('cell-blue.jpg');
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #999999;
+        }
+
+        table.imagetable td {
+            /*background: #dcddc0 url('cell-grey.jpg');*/
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #999999;
+        }
+</style>
+
+<center>
+  
+
+    <table class="imagetable">
+        <tr id="header">
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Version)
+            </th>
+            <th>
+                Created Time
+            </th>
+            <th>
+                Upload
+            </th>
+        </tr>
+
+        @if (Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    @{
+                        string FileSize = string.Empty;
+                        string Type = string.Empty;
+                        if (@item.Size != null)
+                        {
+                            long? KiloByte = @item.Size;
+                            FileSize = KiloByte + " bytes";
+                        }
+                    }
+                    <td>
+                        @if (@item.Size == null)
+                        {
+                            <a href="@Url.Action("GetContainsInFolder", "WebSong", new { folderId = item.Id })">@item.Name</a>
+                        }
+                        else
+                        { @item.Name }
+                    </td>
+                    <td>
+                        @FileSize
+                    </td>
+                    <td>
+                        @{
+                            if (FileSize == string.Empty) { Type = "Folder"; }
+                            else { Type = "File"; }
+                        }
+                        @Type
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Version)
+                    </td>
+                    <td>
+                        @string.Format("{0: MM/dd/yyyy}", Convert.ToDateTime(Html.DisplayFor(modelItem => item.CreatedTime).ToString()))
+                    </td>
+
+                                   </tr>
+                                }
+                            }
+        }
+        else
+        {
+        <tr> <td colspan="6">No Records found</td> </tr>
+        }
+    </table>
+</center>

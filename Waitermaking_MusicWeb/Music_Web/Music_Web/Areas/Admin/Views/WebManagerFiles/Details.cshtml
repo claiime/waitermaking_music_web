@@ -1,0 +1,51 @@
+﻿@model Music_Web.Areas.Admin.Models.DataModel.WebManagerFile
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>WebManagerFile</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FileID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameSong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameSong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FileIDAf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FileIDAf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameSongAf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameSongAf)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdSong }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

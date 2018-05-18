@@ -1,0 +1,70 @@
+﻿@using Music_Web.Areas.Admin.Models.DataModel
+
+@model PagedList.IPagedList<WebManagerFile>
+@using PagedList.Mvc;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Xem liên hệ</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Tạo mới", "Create")
+    </p>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().FileID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().NameSong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().FileIDAf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().NameSongAf)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameSong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FileIDAf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameSongAf)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.IdSong }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.IdSong }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.IdSong })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div id="pageL">
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+
+
+    </div>
+    <div class="col-md-offset-11 col-md2">
+        <ul class="pager">
+            <li class="previous"><a style="background-color:darkblue" href="/Admin/Home/Index"><h5 style="color:white">Trở lại </h5></a></li>
+        </ul>
+    </div>
+</body>
+</html>

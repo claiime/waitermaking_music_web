@@ -1,0 +1,48 @@
+﻿@model Music_Web.Areas.Admin.Models.DataModel.WebPermission
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Chi tiết quyền</title>
+</head>
+<body>
+    <div>
+        <h4>Bảng quyền</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.WebBusinesses.BusinessName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WebBusinesses.BusinessName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PermissionName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PermissionName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.PermissionId }) |
+
+        <div class="col-md-offset-11 col-md2"><button class="btn btn-lg btn-info" onclick="javascript:history.back()">Quay lại</button></div>
+
+    </p>
+</body>
+</html>

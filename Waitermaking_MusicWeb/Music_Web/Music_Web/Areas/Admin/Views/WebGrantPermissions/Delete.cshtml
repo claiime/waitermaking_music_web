@@ -1,0 +1,53 @@
+﻿@model Music_Web.Areas.Admin.Models.DataModel.WebGrantPermission
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Xóa quyền</title>
+</head>
+<body>
+    <h3>Bạn có chắc chắn muốn xóa ?</h3>
+    <div>
+        <h4>Phân quyền</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.WebPermission.PermissionName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WebPermission.PermissionName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.WebUser.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WebUser.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-default" /> |
+                @Html.ActionLink("Trở lại", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

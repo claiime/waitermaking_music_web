@@ -1,0 +1,54 @@
+﻿
+
+@{
+    ViewBag.Title = "Cấp quyền cho người dùng";
+    Layout = "~/Areas/Admin/Views/Shared/Layout.cshtml";
+
+}
+
+<h3 style="padding-top:15px;">
+    <a href="/Admin/WebUsers/Index">Danh sách người dùng</a>
+    &gt;&gt;Cấp quyền cho <b style="color:blue">@ViewBag.usergrant</b>
+</h3>
+<hr />
+<div id="msg"></div>
+<div class="col-xs-4 col-md-4" style="width:600px;">
+    <h4>Danh sách nghiệp vụ</h4>
+    @Html.DropDownList("businessController", (IEnumerable<SelectListItem>)ViewBag.items, new { size = 15, onchange = "getPermissions('/WebGrantPermissions/getPermissions/'+this.value,'" + Session["usergrant"] + "');" })
+</div>
+<div class="col-xs-4 col-md-4">
+    <h4>Danh sách quyền hạn</h4>
+    <div id="listaction"></div>
+</div>
+<script>
+    function getPermissions(action,usergrant){
+        $.ajax({
+            method:"GET",
+            url:action,
+            data:{usertemp:usergrant},
+            success:function (data){
+                $('#listaction').html('');
+                $.each(data,function (index,value){
+                    if(value.IsGranted)
+                        $('#listaction').append("<input type='CheckBox' checked onchange='updatePermission("+"\"/WebGrantPermissions/updatePermission/\"+this.value,\"@Session["usergrant"]\")' value='"+value.PermissionId+"'>"+value.Description +"<br>");
+                    else
+                        $('#listaction').append("<input type='CheckBox' onchange='updatePermission("+"\"/WebGrantPermissions/updatePermission/\"+this.value,\"@Session["usergrant"]\")' value='"+value.PermissionId+"'>"+value.Description +"<br>");
+
+                });
+            }
+        })
+    }
+    function updatePermission(action, usergrant) {
+        $.ajax({
+            method: "GET",
+            url: action,
+            data: { usertemp: usergrant },
+            sucess:function(date){
+            $("msg").html(data);
+        }
+        })
+    }
+</script>
+<div class="row">
+    @Html.ActionLink("Trở lại", "Index", "WebUsers")
+</div>

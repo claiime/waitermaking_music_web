@@ -1,0 +1,79 @@
+﻿@{
+    if (Session["TaiKhoan"] != null)
+    {
+        @Html.Display("Bạn đã đăng nhập thành công");
+    }
+}
+@{
+    ViewBag.Title = "Đăng nhập";
+}
+
+<h1 style="margin-top:80px;">@ViewBag.Title</h1>
+<link href="~/Content/LienHeCss.css" rel="stylesheet" />
+<style>
+        #btnSubmit{
+        padding:8px,8px;
+        margin-left:250px;
+        background: #000000;
+        color:white;
+        margin-top:20px;
+        font-weight:bold
+    }
+        #textlabel{
+            padding-top:10px;
+            font-size:18px;
+            font-weight:bold;
+            color:white;
+            margin-top:10px;
+            float:left
+        }
+        input[type=checkbox] {
+        transform: scale(1.5);
+        
+}
+       
+
+</style>
+@using (Html.BeginForm())
+{
+<div class="container" style="min-height:500px">
+    <div class="row">
+        <div class="text-danger">@ViewBag.ThongBao</div>
+    </div>
+    <div class="row input-container">
+        <div class="row col-xs-12">
+            <div class="col-xs-4" id="textlabel">
+                Tên đăng nhập
+            </div>
+            <div class="col-xs-8">
+                <input type="text" required name="txtTaiKhoan" />
+            </div>
+        </div>
+        <div class="row col-xs-12">
+            <div class="col-xs-4" style="padding-bottom:10px" id="textlabel">
+                Mật khẩu
+            </div>
+            <div class="col-xs-8"  style="padding-bottom:5px">
+                <input type="password" required name="txtMatkhau" />
+            </div>
+        </div>
+    
+        <div class="row col-xs-12" style="padding-top:5px">
+            <div class="checkbox row "  style="color:white;font-size:17px">
+            <input style="padding-top:15px" class="col-xs-6" id="login-remember" type="checkbox" name="remember" value="1"> Nhớ tài khoản
+                
+            </div>
+        </div>
+        <div class="row col-xs-12">
+            <button type="submit" style="text-align:right" id="btnSubmit" class="btn-lrg submit-btn">Đăng nhập</button>
+        </div>
+        <div class="row col-xs-12">
+            <strong  style="font-size:20px;color:#e06209">Nếu chưa có tài khoản mời </strong>
+            <a href="@Url.Action("DangKy","Users")"><b style="color:#ff0000;font-size:26px"> &gt;&gt;Đăng ký&lt;&lt;</b></a>
+
+        </div>
+       
+       
+    </div>
+</div>
+}

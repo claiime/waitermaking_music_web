@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Music_Web.Areas.Admin.Models.DataModel.WebPermission>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Xem quyền</title>
+</head>
+<body>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WebBusinesses.BusinessName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PermissionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WebBusinesses.BusinessName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PermissionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.PermissionId }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.PermissionId }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.PermissionId })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div id="pageL">
+
+    </div>
+    @Html.ActionLink("Trở về", "Index", "WebBusinesses")
+</body>
+</html>

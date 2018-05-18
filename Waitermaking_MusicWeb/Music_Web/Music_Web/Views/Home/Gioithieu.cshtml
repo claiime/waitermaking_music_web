@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Gioithieu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+        input[type=file] {
+        transform: scale(1.4);
+        
+}
+            input[type=submit] {
+        transform: scale(1.4);
+        margin-top:37px
+        
+}
+</style>
+
+<div class="container" id="form1" style="margin-bottom:150px"  >
+    <div class="row setup-content" id="step-1">  
+
+        <div class="col-xs-12" style="margin-left:220px;margin-top:100px">
+        @using (Html.BeginForm("UserUpFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="col-md-8 well text-center" style="height:400px">
+                <h3 style="margin-top:20px">This is demo web waitermaking wav</h3>
+                <label for="fileToUpload" ><h2>Chọn file upload</h2></label><br />
+                <input type="file" name="file" id="file" style="margin-left:60px" />
+                <div class="row" style="margin-bottom:25px">
+                    <input type="submit" onclick="return theimage()" value="Upload" />
+                </div>
+               <p><strong>KẾT QUẢ EXTRACT</strong></p>
+                <p><strong>@ViewBag.Kq </strong></p>
+             </div>
+
+           
+        }
+            </div>
+       
+        
+        </div>
+    </div>
+          
+
+
+
+ <script>
+    function theimage() {
+        
+        if (!$('input[type="file"]').val()) {
+            alert("Chưa chọn file");
+            return false;
+        } else {
+            return true;
+        }
+        
+    }
+</script>

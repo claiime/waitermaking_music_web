@@ -1,0 +1,30 @@
+﻿@model Music_Web.Areas.Admin.Models.DataModel.WebBusiness
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Chi tiết</title>
+</head>
+<body>
+    <div>
+        <h4>Nghiệp vụ</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BusinessName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BusinessName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.BusinessId }) |
+        @Html.ActionLink("Trở lại", "Index")
+    </p>
+</body>
+</html>

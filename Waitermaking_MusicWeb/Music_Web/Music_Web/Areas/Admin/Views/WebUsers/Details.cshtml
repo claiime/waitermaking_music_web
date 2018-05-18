@@ -1,0 +1,102 @@
+﻿@model Music_Web.Areas.Admin.Models.DataModel.WebUser
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Chi tiêt thành viên</title>
+</head>
+<body>
+    <div>
+        <h4>Bảng thành viên</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+           <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd id="email">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Avatar)
+            </dt>
+
+            <dd>
+                <img style="cursor:pointer" id="img_@Model.UserId" src="@Model.Avatar" width="40" onclick="selectImage('ShopUsers/ChangeImage/@Model.UserId',this.id)" />
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsAdmin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsAdmin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Allowed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Allowed)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GioiTinh)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Sữa", "Edit", new { id = Model.UserId }) |
+        @Html.ActionLink("Trở lại", "Index")
+    </p>
+</body>
+</html>
